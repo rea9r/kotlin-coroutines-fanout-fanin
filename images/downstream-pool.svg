@@ -1,25 +1,42 @@
-<svg width="720" height="244" viewBox="0 0 720 244" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, &quot;Noto Sans JP&quot;, Meiryo, sans-serif">
-  <defs><marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#8A94A6"/></marker></defs>
-  <text x="360" y="26" text-anchor="middle" fill="#6B778C" font-size="13.5">並行に 6 件呼んでも、同時に使える接続はプールの数（4）まで。あふれた分は待つ</text>
+<svg width="720" height="300" viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, &quot;Noto Sans JP&quot;, Meiryo, sans-serif">
+  <defs>
+    <marker id="g" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#8A94A6"/></marker>
+    <marker id="am" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#FFAB00"/></marker>
+  </defs>
 
-  <rect x="20" y="116" width="104" height="54" rx="6" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.3"/><text x="72.0" y="147.5" text-anchor="middle" fill="#172B4D" font-size="15">呼び出し側</text>
-  <path d="M124,143 L156,143" fill="none" stroke="#8A94A6" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="360" y="22" text-anchor="middle" fill="#6B778C" font-size="12">6 件を並行に呼んでも、同時に使える接続はプール数（4）まで。あふれた 2 件は待つ</text>
 
-  <text x="191" y="108" text-anchor="middle" fill="#6B778C" font-size="12">待ち</text>
-  <rect x="158" y="116" width="66" height="24" rx="6" fill="#FFF7E6" stroke="#FFAB00" stroke-width="1.3"/><text x="191.0" y="132.5" text-anchor="middle" fill="#7A4D00" font-size="12">待ち</text>
-  <rect x="158" y="146" width="66" height="24" rx="6" fill="#FFF7E6" stroke="#FFAB00" stroke-width="1.3"/><text x="191.0" y="162.5" text-anchor="middle" fill="#7A4D00" font-size="12">待ち</text>
-  <path d="M226,143 L258,143" fill="none" stroke="#8A94A6" stroke-width="1.5" marker-end="url(#a)"/>
+  <!-- fan-out arrows: 4 into pool (served), 2 into 待ち (overflow) -->
+  <path d="M124,127 L362,73"  fill="none" stroke="#8A94A6" stroke-width="1.4" marker-end="url(#g)"/>
+  <path d="M124,127 L362,103" fill="none" stroke="#8A94A6" stroke-width="1.4" marker-end="url(#g)"/>
+  <path d="M124,127 L362,133" fill="none" stroke="#8A94A6" stroke-width="1.4" marker-end="url(#g)"/>
+  <path d="M124,127 L362,163" fill="none" stroke="#8A94A6" stroke-width="1.4" marker-end="url(#g)"/>
+  <path d="M124,127 L388,226" fill="none" stroke="#FFAB00" stroke-width="1.4" marker-end="url(#am)"/>
+  <path d="M124,127 L456,226" fill="none" stroke="#FFAB00" stroke-width="1.4" marker-end="url(#am)"/>
 
-  <rect x="262" y="52" width="196" height="176" rx="10" fill="none" stroke="#B3BAC5" stroke-width="1.3"/>
-  <text x="360" y="74" text-anchor="middle" fill="#6B778C" font-size="14">接続プール（最大 4）</text>
-  <rect x="280" y="84" width="160" height="26" rx="6" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.3"/><text x="360.0" y="101.5" text-anchor="middle" fill="#186A3B" font-size="12">使用中</text>
-  <rect x="280" y="116" width="160" height="26" rx="6" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.3"/><text x="360.0" y="133.5" text-anchor="middle" fill="#186A3B" font-size="12">使用中</text>
-  <rect x="280" y="148" width="160" height="26" rx="6" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.3"/><text x="360.0" y="165.5" text-anchor="middle" fill="#186A3B" font-size="12">使用中</text>
-  <rect x="280" y="180" width="160" height="26" rx="6" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.3"/><text x="360.0" y="197.5" text-anchor="middle" fill="#186A3B" font-size="12">使用中</text>
-  <path d="M458,143 L548,143" fill="none" stroke="#8A94A6" stroke-width="1.5" marker-end="url(#a)"/>
+  <!-- caller -->
+  <rect x="28" y="96" width="96" height="62" rx="9" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.4"/>
+  <text x="76" y="132" text-anchor="middle" fill="#172B4D" font-size="12.5">呼び出し側</text>
+  <text x="76" y="176" text-anchor="middle" fill="#6B778C" font-size="11">6 件を並行</text>
 
-  <ellipse cx="606" cy="78" rx="40" ry="11" fill="none" stroke="#A5AEBC" stroke-width="1.3"/>
-  <path d="M566,78 L566,206 A40,11 0 0 0 646,206 L646,78" fill="none" stroke="#A5AEBC" stroke-width="1.3"/>
-  <text x="606" y="147" text-anchor="middle" fill="#6B778C" font-size="15">DB</text>
-  <text x="606" y="232" text-anchor="middle" fill="#6B778C" font-size="11.5">外部 API でも同じ</text>
+  <!-- pool -->
+  <text x="425" y="44" text-anchor="middle" fill="#7A869A" font-size="11.5">接続プール（最大 4）＝ 同時に処理中 4</text>
+  <rect x="350" y="50" width="150" height="146" rx="9" fill="none" stroke="#B3BAC5" stroke-width="1.5"/>
+  <rect x="366" y="60" width="118" height="26" rx="5" fill="#B3D4FC" stroke="#4C9AFF" stroke-width="1.2"/><text x="425" y="77" text-anchor="middle" fill="#172B4D" font-size="11">使用中</text>
+  <rect x="366" y="90" width="118" height="26" rx="5" fill="#B3D4FC" stroke="#4C9AFF" stroke-width="1.2"/><text x="425" y="107" text-anchor="middle" fill="#172B4D" font-size="11">使用中</text>
+  <rect x="366" y="120" width="118" height="26" rx="5" fill="#B3D4FC" stroke="#4C9AFF" stroke-width="1.2"/><text x="425" y="137" text-anchor="middle" fill="#172B4D" font-size="11">使用中</text>
+  <rect x="366" y="150" width="118" height="26" rx="5" fill="#B3D4FC" stroke="#4C9AFF" stroke-width="1.2"/><text x="425" y="167" text-anchor="middle" fill="#172B4D" font-size="11">使用中</text>
+
+  <!-- DB -->
+  <path d="M574,104 V150 a26,8 0 0 0 52,0 V104" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.3"/>
+  <ellipse cx="600" cy="104" rx="26" ry="8" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.3"/>
+  <text x="600" y="132" text-anchor="middle" fill="#172B4D" font-size="12">DB</text>
+  <path d="M500,123 L570,123" fill="none" stroke="#8A94A6" stroke-width="1.4" marker-end="url(#g)"/>
+
+  <!-- 待ち (overflow), fed into pool when a slot frees -->
+  <text x="425" y="222" text-anchor="middle" fill="#7A869A" font-size="11">待ち（あふれ 2）</text>
+  <rect x="360" y="230" width="62" height="28" rx="6" fill="#FFF7E6" stroke="#FFAB00" stroke-width="1.3"/><text x="391" y="249" text-anchor="middle" fill="#7A4D00" font-size="11">待ち</text>
+  <rect x="428" y="230" width="62" height="28" rx="6" fill="#FFF7E6" stroke="#FFAB00" stroke-width="1.3"/><text x="459" y="249" text-anchor="middle" fill="#7A4D00" font-size="11">待ち</text>
+  <path d="M425,230 L425,199" fill="none" stroke="#FFAB00" stroke-width="1.4" stroke-dasharray="5 3" marker-end="url(#am)"/>
+  <text x="505" y="240" fill="#6B778C" font-size="10.5">空きが出たら入る</text>
 </svg>
