@@ -1,0 +1,45 @@
+<svg width="740" height="352" viewBox="0 0 740 352" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, &quot;Noto Sans JP&quot;, Meiryo, sans-serif">
+  <style>.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
+
+  <!-- time gridlines -->
+  <line x1="110" y1="50" x2="110" y2="190" stroke="#97A0AF" stroke-width="1" stroke-dasharray="2 5" opacity="0.35"/>
+  <line x1="340" y1="50" x2="340" y2="190" stroke="#97A0AF" stroke-width="1" stroke-dasharray="2 5" opacity="0.35"/>
+  <line x1="570" y1="50" x2="570" y2="198" stroke="#FF8F73" stroke-width="1.3" stroke-dasharray="4 3" opacity="0.8"/>
+  <text x="110" y="40" text-anchor="middle" fill="#7A869A" font-size="11" class="mono">0ms</text>
+  <text x="340" y="40" text-anchor="middle" fill="#7A869A" font-size="11" class="mono">10ms</text>
+  <text x="570" y="40" text-anchor="middle" fill="#7A869A" font-size="11" class="mono">20ms</text>
+
+  <!-- lane a -->
+  <text x="58" y="82" text-anchor="middle" fill="#172B4D" font-size="13" font-weight="600" class="mono">a</text>
+  <rect x="110" y="64" width="230" height="26" rx="6" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.4"/>
+  <rect x="344" y="62" width="158" height="30" rx="8" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.5"/>
+  <text x="423" y="81" text-anchor="middle" fill="#186A3B" font-size="10.5" class="mono">committed.add(1)</text>
+
+  <!-- lane b -->
+  <text x="58" y="128" text-anchor="middle" fill="#172B4D" font-size="13" font-weight="600" class="mono">b</text>
+  <rect x="110" y="110" width="230" height="26" rx="6" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.4"/>
+  <rect x="344" y="108" width="158" height="30" rx="8" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.5"/>
+  <text x="423" y="127" text-anchor="middle" fill="#186A3B" font-size="10.5" class="mono">committed.add(2)</text>
+
+  <!-- lane c -->
+  <text x="58" y="174" text-anchor="middle" fill="#172B4D" font-size="13" font-weight="600" class="mono">c</text>
+  <rect x="110" y="156" width="460" height="26" rx="6" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.4"/>
+  <rect x="574" y="154" width="150" height="30" rx="8" fill="#FFEBE6" stroke="#FF8F73" stroke-width="1.5"/>
+  <text x="649" y="173" text-anchor="middle" fill="#BF2600" font-size="10.5" class="mono">error("boom")</text>
+
+  <!-- event annotation -->
+  <rect x="110" y="202" width="614" height="46" rx="8" fill="#FFF7E6" stroke="#FFAB00" stroke-width="1.4"/>
+  <text x="417" y="222" text-anchor="middle" fill="#7A4D00" font-size="12">20ms で c が失敗し、coroutineScope は残りをキャンセルして例外を外へ出す</text>
+  <text x="417" y="240" text-anchor="middle" fill="#7A4D00" font-size="12">でも a・b は 10ms で完了済み。その副作用は取り消されない</text>
+
+  <!-- result -->
+  <rect x="110" y="262" width="290" height="50" rx="8" fill="#FFEBE6" stroke="#FF8F73" stroke-width="2"/>
+  <text x="255" y="284" text-anchor="middle" fill="#BF2600" font-size="12.5">全体は失敗</text>
+  <text x="255" y="302" text-anchor="middle" fill="#BF2600" font-size="11" class="mono">throw IllegalStateException</text>
+
+  <rect x="434" y="262" width="290" height="50" rx="8" fill="#E3FCEF" stroke="#57D9A3" stroke-width="2"/>
+  <text x="579" y="284" text-anchor="middle" fill="#186A3B" font-size="12.5">副作用は残る</text>
+  <text x="579" y="302" text-anchor="middle" fill="#186A3B" font-size="11" class="mono">committed == [1, 2]</text>
+
+  <text x="417" y="336" text-anchor="middle" fill="#6B778C" font-size="12">キャンセルはロールバックではない。完了した副作用は元に戻らない</text>
+</svg>
