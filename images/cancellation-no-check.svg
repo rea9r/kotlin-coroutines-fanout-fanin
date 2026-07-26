@@ -1,0 +1,41 @@
+<svg width="580" height="392" viewBox="0 0 580 392" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, &quot;Noto Sans JP&quot;, Meiryo, sans-serif">
+  <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#8A94A6"/></marker><marker id="vh" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#8777D9"/></marker></defs>
+  <style>.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
+  <rect x="25" y="16" width="150" height="44" rx="8" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.4"/>
+  <text x="100" y="34" text-anchor="middle" fill="#172B4D" font-size="11.5">呼び出し側</text>
+  <text x="100" y="50" text-anchor="middle" fill="#42526E" font-size="9">（Job を持つ側）</text>
+  <rect x="230" y="16" width="120" height="44" rx="8" fill="#EAE6FF" stroke="#8777D9" stroke-width="1.4"/>
+  <text x="290" y="34" text-anchor="middle" fill="#403294" font-size="11.5" class="mono">Job</text>
+  <text x="290" y="50" text-anchor="middle" fill="#5243AA" font-size="9">（launch が返す）</text>
+  <rect x="395" y="16" width="170" height="44" rx="8" fill="#F4F5F7" stroke="#C1C7D0" stroke-width="1.4"/>
+  <text x="480" y="34" text-anchor="middle" fill="#172B4D" font-size="11.5">実行側のコルーチン</text>
+  <text x="480" y="50" text-anchor="middle" fill="#42526E" font-size="9">（<tspan class="mono">launch</tspan> で起動）</text>
+  <text x="468" y="88" text-anchor="end" fill="#6B778C" font-size="10">走行中（<tspan class="mono">work</tspan> を繰り返す）</text>
+  <rect x="93" y="104" width="14" height="22" rx="3" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1"/>
+  <text x="194" y="97" text-anchor="middle" fill="#5E6C84" font-size="10" class="mono">job.cancel()</text>
+  <text x="194" y="110" text-anchor="middle" fill="#6B778C" font-size="8.5">（withTimeout の期限切れも同じ）</text>
+  <path d="M107,116 L282,116" fill="none" stroke="#8A94A6" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="230" y="124" width="120" height="40" rx="6" fill="#EAE6FF" stroke="#8777D9" stroke-width="1.3"/>
+  <text x="290" y="140" text-anchor="middle" fill="#403294" font-size="9.5" class="mono">isActive = false</text>
+  <text x="290" y="155" text-anchor="middle" fill="#5243AA" font-size="9">（キャンセル要求あり）</text>
+  <text x="110" y="163" fill="#6B778C" font-size="9.5">すぐ戻る</text>
+  <text x="110" y="177" fill="#6B778C" font-size="9.5">（待つなら <tspan class="mono">cancelAndJoin()</tspan>）</text>
+  <line x1="100" y1="60" x2="100" y2="384" stroke="#C1C7D0" stroke-width="1" stroke-dasharray="3 5" opacity="0.6"/>
+  <line x1="290" y1="60" x2="290" y2="250" stroke="#C1C7D0" stroke-width="1" stroke-dasharray="3 5" opacity="0.6"/>
+  <line x1="290" y1="272" x2="290" y2="384" stroke="#C1C7D0" stroke-width="1" stroke-dasharray="3 5" opacity="0.6"/>
+  <line x1="480" y1="60" x2="480" y2="366" stroke="#C1C7D0" stroke-width="1" stroke-dasharray="3 5" opacity="0.6"/>
+  <rect x="473" y="64" width="14" height="66" rx="3" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1"/>
+  <rect x="473" y="130" width="14" height="160" rx="3" fill="#FFF7E6" stroke="#FFAB00" stroke-width="1.2"/>
+  <rect x="308" y="190" width="150" height="44" rx="6" fill="none" stroke="#FFAB00" stroke-width="1.3" stroke-dasharray="4 3"/>
+  <text x="383" y="208" text-anchor="middle" fill="#B26A00" font-size="9.5">確認する場所がない</text>
+  <text x="383" y="224" text-anchor="middle" fill="#B26A00" font-size="9">CPU ループ／同期ブロッキング</text>
+  <path d="M458,212 L471,212" fill="none" stroke="#FFAB00" stroke-width="1.2" stroke-dasharray="3 2"/>
+  <text x="296" y="262" text-anchor="middle" fill="#6B778C" font-size="9">Job を確認する矢印が 1 本もない ＝ 要求は確認されない</text>
+  <rect x="355" y="296" width="210" height="44" rx="6" fill="#FFF7E6" stroke="#FFAB00" stroke-width="1.5"/>
+  <text x="460" y="313" text-anchor="middle" fill="#7A4D00" font-size="9.5">途中では止まらず、最後まで走り切る</text>
+  <text x="460" y="330" text-anchor="middle" fill="#7A4D00" font-size="9"><tspan class="mono">cancel</tspan>・<tspan class="mono">withTimeout</tspan> では止まらない</text>
+  <text x="112" y="345" fill="#6B778C" font-size="9">完了（走り切ったあと）</text>
+  <path d="M473,352 L107,352" fill="none" stroke="#8A94A6" stroke-width="1.2" stroke-dasharray="5 3" marker-end="url(#ah)"/>
+  <line x1="466" y1="366" x2="494" y2="366" stroke="#FFAB00" stroke-width="2"/>
+  <text x="480" y="382" text-anchor="middle" fill="#6B778C" font-size="9.5">終了</text>
+</svg>
