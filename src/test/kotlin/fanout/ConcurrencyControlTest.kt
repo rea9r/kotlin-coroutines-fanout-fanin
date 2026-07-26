@@ -2,7 +2,9 @@ package fanout
 
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
+import java.io.IOException
 import kotlinx.coroutines.TimeoutCancellationException
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
@@ -64,5 +66,36 @@ class ConcurrencyControlTest {
     @Test
     fun `withRetry rejects invalid arguments`() = runTest {
         shouldThrow<IllegalArgumentException> { withRetry<String>(maxAttempts = 0) { "x" } }
+    }
+
+    @Test
+    fun `withRetry succeeds after transient failures`() = runTest {
+        var attempts = 0
+        val result = withRetry(maxAttempts = 3, initialDelay = 100) {
+            attempts++
+            if (attempts < 3) throw IOException("transient") else "ok"
+        }
+        result shouldBe "ok"
+        attempts shouldBe 3
+        testScheduler.currentTime shouldBe 300 // backoff 100ms + 200ms between the three attempts
+    }
+
+    @Test
+    fun `cancellation during backoff stops the retry loop`() = runTest {
+        var attempts = 0
+        val job = launch {
+            withRetry(maxAttempts = 5, initialDelay = 1_000) {
+                attempts++
+                throw IOException("always")
+            }
+        }
+        testScheduler.advanceTimeBy(500) // first attempt failed; now suspended in the backoff delay
+        testScheduler.runCurrent()
+        job.cancel()
+        job.join()
+        testScheduler.advanceTimeBy(60_000) // no further attempts even long after
+        testScheduler.runCurrent()
+        attempts shouldBe 1
+        job.isCancelled shouldBe true
     }
 }

@@ -30,7 +30,7 @@
   <text x="68" y="198" fill="#172B4D" font-size="10" font-weight="600">明示確認</text>
   <rect x="158" y="168" width="270" height="42" rx="6" fill="#EAE6FF" stroke="#8777D9" stroke-width="1.1"/>
   <text x="293" y="185" text-anchor="middle" fill="#42526E" font-size="10" class="mono">delay ・ ensureActive() ・ yield()</text>
-  <text x="293" y="200" text-anchor="middle" fill="#5243AA" font-size="9.5">中断や明示確認で isActive を見る</text>
+  <text x="293" y="200" text-anchor="middle" fill="#5243AA" font-size="9.5">中断や明示確認で isActive を確認</text>
   <path d="M430,189 L456,189" fill="none" stroke="#8A94A6" stroke-width="1.5" marker-end="url(#ah)"/>
   <rect x="458" y="168" width="326" height="42" rx="6" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.3"/>
   <rect x="726" y="172" width="50" height="16" rx="8" fill="#36B37E"/><text x="751" y="184" text-anchor="middle" fill="#FFFFFF" font-size="9">throw</text>
@@ -43,7 +43,7 @@
   <text x="68" y="246" fill="#172B4D" font-size="10" font-weight="600">確認</text>
   <rect x="158" y="216" width="270" height="42" rx="6" fill="#EAE6FF" stroke="#8777D9" stroke-width="1.1"/>
   <text x="293" y="233" text-anchor="middle" fill="#42526E" font-size="10.5" class="mono">while (isActive) { … }</text>
-  <text x="293" y="248" text-anchor="middle" fill="#5243AA" font-size="9.5">非throw の確認で isActive を見る</text>
+  <text x="293" y="248" text-anchor="middle" fill="#5243AA" font-size="9.5">非throw の確認で isActive を確認</text>
   <path d="M430,237 L456,237" fill="none" stroke="#8A94A6" stroke-width="1.5" marker-end="url(#ah)"/>
   <rect x="458" y="216" width="326" height="42" rx="6" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.3"/>
   <rect x="708" y="220" width="68" height="16" rx="8" fill="#E3FCEF" stroke="#57D9A3"/><text x="742" y="232" text-anchor="middle" fill="#186A3B" font-size="9">非throw</text>
@@ -52,11 +52,11 @@
 
   <!-- L3: no read place -->
   <circle cx="54" cy="285" r="9" fill="#FFF7E6" stroke="#FFAB00"/><text x="54" y="289" text-anchor="middle" fill="#7A4D00" font-size="10">3</text>
-  <text x="68" y="281" fill="#172B4D" font-size="10" font-weight="600">見る場所</text>
-  <text x="68" y="294" fill="#172B4D" font-size="10" font-weight="600">なし</text>
+  <text x="68" y="281" fill="#172B4D" font-size="10" font-weight="600">確認する</text>
+  <text x="68" y="294" fill="#172B4D" font-size="10" font-weight="600">場所なし</text>
   <rect x="158" y="264" width="270" height="42" rx="6" fill="#FFF7E6" stroke="#FFAB00" stroke-width="1.1" stroke-dasharray="4 3"/>
   <text x="293" y="281" text-anchor="middle" fill="#7A4D00" font-size="10">CPU ループ／同期ブロッキング</text>
-  <text x="293" y="296" text-anchor="middle" fill="#7A4D00" font-size="9.5">isActive を見る場所がない</text>
+  <text x="293" y="296" text-anchor="middle" fill="#7A4D00" font-size="9.5">isActive を確認する場所がない</text>
   <path d="M430,285 L456,285" fill="none" stroke="#8A94A6" stroke-width="1.5" marker-end="url(#ah)"/>
   <rect x="458" y="264" width="326" height="42" rx="6" fill="#FFF7E6" stroke="#FFAB00" stroke-width="1.3"/>
   <rect x="704" y="268" width="72" height="16" rx="8" fill="#FFF7E6" stroke="#FFAB00"/><text x="740" y="280" text-anchor="middle" fill="#7A4D00" font-size="9">走り切る</text>
@@ -73,7 +73,7 @@
   <rect x="270" y="356" width="58" height="18" rx="9" fill="#36B37E"/><text x="299" y="369" text-anchor="middle" fill="#FFFFFF" font-size="10.5" font-weight="700">≈106ms</text>
   <text x="334" y="369" fill="#6B778C" font-size="9.5">ほぼ期限どおりに停止</text>
   <rect x="150" y="380" width="550" height="14" rx="3" fill="#FFF7E6" stroke="#FFAB00" stroke-width="1.2"/>
-  <text x="16" y="391" fill="#6B778C" font-size="9.5">チェックなし CPU ループ</text>
+  <text x="16" y="391" fill="#6B778C" font-size="9.5">確認なしの CPU ループ</text>
   <text x="425" y="392" text-anchor="middle" fill="#B26A00" font-size="10.5" font-weight="700">≈515ms  打ち切れず走り切る</text>
   <text x="150" y="408" text-anchor="middle" fill="#6B778C" font-size="8">0</text>
   <text x="700" y="408" text-anchor="end" fill="#6B778C" font-size="9">実時間 (ms)</text>

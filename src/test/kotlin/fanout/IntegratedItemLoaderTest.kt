@@ -106,4 +106,19 @@ class IntegratedItemLoaderTest {
         (caught is CancellationException) shouldBe true
         (caught is ItemLoadDeadlineException) shouldBe false
     }
+
+    @Test
+    fun `concurrent api calls never exceed the permit count`() = runTest {
+        var inFlight = 0
+        var maxInFlight = 0
+        val loader = ItemLoader({ id ->
+            inFlight++
+            maxInFlight = maxOf(maxInFlight, inFlight)
+            delay(100)
+            inFlight--
+            Item(id)
+        })
+        loader.loadAll((1..12).toList()) // 12 items x 100ms with 4 permits -> 3 waves, within the deadline
+        maxInFlight shouldBe 4
+    }
 }

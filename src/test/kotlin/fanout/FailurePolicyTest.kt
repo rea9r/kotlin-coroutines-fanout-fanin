@@ -54,6 +54,88 @@ class FailurePolicyTest {
     }
 
     @Test
+    fun `one value-ified failure leaves the other successes intact`() = runTest {
+        val results = coroutineScope {
+            (1..3).map { id ->
+                async {
+                    runSuspendCatching {
+                        delay(100)
+                        if (id == 2) throw IOException("io") else Item(id)
+                    }
+                }
+            }.awaitAll()
+        }
+        results.count { it.isSuccess } shouldBe 2
+        results.count { it.isFailure } shouldBe 1
+    }
+
+    @Test
+    fun `swallowing cancellation keeps a cancelled coroutine running, rethrowing stops it`() = runTest {
+        // kotlin.runCatching swallows the CancellationException, so execution continues
+        var continuedAfterSwallow = false
+        val swallowing = launch {
+            runCatching { delay(1_000) }
+            continuedAfterSwallow = true
+        }
+        testScheduler.advanceTimeBy(100)
+        testScheduler.runCurrent()
+        swallowing.cancel()
+        swallowing.join()
+        continuedAfterSwallow shouldBe true
+
+        // runSuspendCatching rethrows it, so the code after never runs
+        var continuedAfterRethrow = false
+        val rethrowing = launch {
+            runSuspendCatching { delay(1_000) }
+            continuedAfterRethrow = true
+        }
+        testScheduler.advanceTimeBy(100)
+        testScheduler.runCurrent()
+        rethrowing.cancel()
+        rethrowing.join()
+        continuedAfterRethrow shouldBe false
+    }
+
+    @Test
+    fun `coroutineScope with per-await catching cannot save the siblings`() = runTest {
+        var slowCompleted = false
+        shouldThrow<IOException> {
+            coroutineScope {
+                val failing = async { delay(50); throw IOException("io") }
+                val slow = async { delay(1_000); slowCompleted = true; Item(1) }
+                listOf(failing, slow).map { d ->
+                    try {
+                        FetchOutcome.Success(d.await())
+                    } catch (e: IOException) {
+                        FetchOutcome.Failed(e) // catching at await() is too late: the scope is already failing
+                    }
+                }
+            }
+        }
+        slowCompleted shouldBe false // the failure cancelled the sibling before its await was reached
+    }
+
+    @Test
+    fun `caller cancellation still reaches supervisorScope children`() = runTest {
+        var childSawCancellation = false
+        val api = ItemApi { id ->
+            try {
+                delay(10_000)
+                Item(id)
+            } catch (e: CancellationException) {
+                childSawCancellation = true
+                throw e
+            }
+        }
+        val job = launch { loadAllSupervised(api, listOf(1)) }
+        testScheduler.advanceTimeBy(100)
+        testScheduler.runCurrent()
+        job.cancel()
+        job.join()
+        childSawCancellation shouldBe true // supervisorScope isolates sibling failure, not caller cancellation
+    }
+
+    @Test
     fun `await distinguishes its two cancellation causes with ensureActive`() = runTest {
         // (b) the awaited Deferred was cancelled: ensureActive() does NOT throw
         var reachedDeferredCancelledBranch = false
