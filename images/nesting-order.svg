@@ -1,9 +1,9 @@
 <svg width="720" height="366" viewBox="0 0 720 366" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, &quot;Noto Sans JP&quot;, Meiryo, sans-serif">
   <rect x="40" y="44" width="640" height="300" rx="10" fill="none" stroke="#B3BAC5" stroke-width="1.3"/>   <text x="56" y="68" fill="#5E6C84" font-size="13">① 全体の締め切り（withTimeout 2000ms）</text>
   <rect x="76" y="82" width="568" height="226" rx="10" fill="none" stroke="#B3BAC5" stroke-width="1.3"/>   <text x="92" y="106" fill="#5E6C84" font-size="13">② 再試行（retry）</text>
-  <rect x="112" y="120" width="496" height="152" rx="10" fill="none" stroke="#B3BAC5" stroke-width="1.3"/> <text x="128" y="144" fill="#5E6C84" font-size="13">③ 試行ごとの permit（Semaphore.withPermit）</text>
+  <rect x="112" y="120" width="496" height="152" rx="10" fill="none" stroke="#B3BAC5" stroke-width="1.3"/> <text x="128" y="144" fill="#5E6C84" font-size="13">③ 試行ごとの permit（Semaphore.withPermit・取得と解放は試行ごと）</text>
   <rect x="148" y="158" width="424" height="78" rx="10" fill="none" stroke="#B3BAC5" stroke-width="1.3"/>  <text x="164" y="182" fill="#5E6C84" font-size="13">④ 試行の時間制限（withTimeoutOrNull 500ms）</text>
   <rect x="196" y="196" width="328" height="34" rx="7" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.3"/>
   <text x="360" y="218" text-anchor="middle" fill="#172B4D" font-size="13">API 呼び出し</text>
-  <text x="360" y="330" text-anchor="middle" fill="#6B778C" font-size="12.5">外側から順に：全体の締め切り → 再試行 → 同時数 → 試行の時間制限 → 呼び出し</text>
+  <text x="360" y="330" text-anchor="middle" fill="#6B778C" font-size="12.5">外側から内側へ：全体の締め切り ⊃ 再試行 ⊃ permit（同時数）⊃ 試行の時間制限 ⊃ 呼び出し</text>
 </svg>

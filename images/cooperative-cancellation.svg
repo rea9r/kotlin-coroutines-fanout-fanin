@@ -1,77 +1,58 @@
-<svg width="770" height="440" viewBox="0 0 770 440" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, &quot;Noto Sans JP&quot;, Meiryo, sans-serif">
-  <defs>
-    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
-      <path d="M0,0 L9,4.5 L0,9 z" fill="#8A94A6"/>
-    </marker>
-  </defs>
+<svg width="770" height="458" viewBox="0 0 770 458" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, &quot;Noto Sans JP&quot;, Meiryo, sans-serif">
+  <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#8A94A6"/></marker></defs>
   <style>.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
 
-  <!-- ===== Job state machine ===== -->
-  <rect x="40" y="40" width="150" height="50" rx="8" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.5"/>
-  <text x="115" y="62" text-anchor="middle" fill="#186A3B" font-size="14" font-weight="600">Active</text>
-  <text x="115" y="80" text-anchor="middle" fill="#186A3B" font-size="11" class="mono">isActive = true</text>
-
+  <rect x="40" y="40" width="150" height="50" rx="8" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.5"/>
+  <text x="115" y="62" text-anchor="middle" fill="#172B4D" font-size="14" font-weight="600">Active</text>
+  <text x="115" y="80" text-anchor="middle" fill="#172B4D" font-size="11" class="mono">isActive = true</text>
   <path d="M190,65 L246,65" fill="none" stroke="#8A94A6" stroke-width="1.6" marker-end="url(#ah)"/>
   <text x="218" y="57" text-anchor="middle" fill="#7A869A" font-size="11" class="mono">cancel()</text>
-
   <rect x="250" y="40" width="180" height="50" rx="8" fill="#FFF7E6" stroke="#FFAB00" stroke-width="1.5"/>
   <text x="340" y="62" text-anchor="middle" fill="#7A4D00" font-size="14" font-weight="600">Cancelling</text>
   <text x="340" y="80" text-anchor="middle" fill="#7A4D00" font-size="11" class="mono">isActive = false</text>
-
   <path d="M430,65 L496,65" fill="none" stroke="#8A94A6" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#ah)"/>
-  <text x="463" y="57" text-anchor="middle" fill="#7A869A" font-size="9.5">巻き戻し後</text>
-
+  <text x="463" y="57" text-anchor="middle" fill="#7A869A" font-size="9.5">本体が終わったら</text>
   <rect x="500" y="40" width="150" height="50" rx="8" fill="none" stroke="#B3BAC5" stroke-width="1.5"/>
   <text x="575" y="70" text-anchor="middle" fill="#8993A4" font-size="14" font-weight="600">Cancelled</text>
 
-  <!-- ===== thesis ===== -->
   <text x="385" y="114" text-anchor="middle" fill="#6B778C" font-size="12">cancel() は Job を Cancelling にするだけ。止まるのは、次に isActive を読む場所しだい</text>
-
   <rect x="305" y="126" width="160" height="34" rx="8" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.5"/>
   <text x="385" y="148" text-anchor="middle" fill="#172B4D" font-size="12.5">実行中のコルーチン</text>
-
   <path d="M372,161 L212,181" fill="none" stroke="#8A94A6" stroke-width="1.6" marker-end="url(#ah)"/>
   <path d="M398,161 L558,181" fill="none" stroke="#8A94A6" stroke-width="1.6" marker-end="url(#ah)"/>
 
-  <!-- ===== LEFT: has a check point ===== -->
+  <!-- LEFT: has check point (green = cooperative, stops correctly) -->
   <rect x="40" y="184" width="330" height="78" rx="8" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.5"/>
   <text x="205" y="208" text-anchor="middle" fill="#186A3B" font-size="13.5" font-weight="600">isActive を読む場所がある</text>
-  <text x="205" y="230" text-anchor="middle" fill="#186A3B" font-size="11" class="mono">delay / yield() の再開時に確認</text>
+  <text x="205" y="230" text-anchor="middle" fill="#186A3B" font-size="11" class="mono">delay・yield()（再開時に確認）</text>
   <text x="205" y="249" text-anchor="middle" fill="#186A3B" font-size="11" class="mono">または ensureActive()</text>
+  <path d="M205,262 L205,277" fill="none" stroke="#8A94A6" stroke-width="1.6" marker-end="url(#ah)"/>
+  <rect x="46" y="279" width="318" height="50" rx="6" fill="#F4F5F7" stroke="#C1C7D0" stroke-width="1.2"/>
+  <text x="205" y="297" text-anchor="middle" fill="#7A869A" font-size="10">ensureActive() の中身（イメージ）</text>
+  <text x="205" y="316" text-anchor="middle" fill="#172B4D" font-size="10.5" class="mono">if (!isActive) throw CancellationException()</text>
+  <path d="M205,329 L205,346" fill="none" stroke="#8A94A6" stroke-width="1.6" marker-end="url(#ah)"/>
+  <rect x="46" y="348" width="318" height="46" rx="8" fill="#E3FCEF" stroke="#57D9A3" stroke-width="2"/>
+  <text x="205" y="369" text-anchor="middle" fill="#186A3B" font-size="12.5">スタックを巻き戻して終了</text>
+  <text x="205" y="386" text-anchor="middle" fill="#186A3B" font-size="10.5" class="mono">Job: Cancelling -&gt; Cancelled</text>
+  <path d="M205,394 L205,406" fill="none" stroke="#8A94A6" stroke-width="1.4" marker-end="url(#ah)"/>
+  <rect x="140" y="408" width="130" height="30" rx="15" fill="#36B37E"/>
+  <text x="205" y="428" text-anchor="middle" fill="#FFFFFF" font-size="14.5" font-weight="600">≈ 106ms</text>
 
-  <path d="M205,262 L205,279" fill="none" stroke="#8A94A6" stroke-width="1.6" marker-end="url(#ah)"/>
+  <!-- RIGHT: no check point (amber = caution behavior, not a bug) -->
+  <rect x="400" y="184" width="330" height="78" rx="8" fill="#FFF7E6" stroke="#FFAB00" stroke-width="1.5"/>
+  <text x="565" y="208" text-anchor="middle" fill="#7A4D00" font-size="13.5" font-weight="600">isActive を読む場所がない</text>
+  <text x="565" y="230" text-anchor="middle" fill="#7A4D00" font-size="11" class="mono">チェックなしの CPU ループ</text>
+  <text x="565" y="249" text-anchor="middle" fill="#7A4D00" font-size="11">中断点も ensureActive() もない</text>
+  <path d="M565,262 L565,277" fill="none" stroke="#8A94A6" stroke-width="1.6" marker-end="url(#ah)"/>
+  <rect x="408" y="279" width="314" height="50" rx="6" fill="#FFF7E6" stroke="#FFAB00" stroke-width="1.2"/>
+  <text x="565" y="308" text-anchor="middle" fill="#7A4D00" font-size="11.5">isActive が false でも観測されない</text>
+  <path d="M565,329 L565,346" fill="none" stroke="#8A94A6" stroke-width="1.6" marker-end="url(#ah)"/>
+  <rect x="408" y="348" width="314" height="46" rx="8" fill="#FFF7E6" stroke="#FFAB00" stroke-width="2"/>
+  <text x="565" y="369" text-anchor="middle" fill="#7A4D00" font-size="12.5">ブロックが戻るまで走り切る</text>
+  <text x="565" y="386" text-anchor="middle" fill="#7A4D00" font-size="10.5" class="mono">戻るまで Cancelling（戻ると完了）</text>
+  <path d="M565,394 L565,406" fill="none" stroke="#8A94A6" stroke-width="1.4" marker-end="url(#ah)"/>
+  <rect x="500" y="408" width="130" height="30" rx="15" fill="#FFAB00"/>
+  <text x="565" y="428" text-anchor="middle" fill="#172B4D" font-size="14.5" font-weight="600">≈ 515ms</text>
 
-  <rect x="46" y="281" width="318" height="40" rx="6" fill="#F4F5F7" stroke="#C1C7D0" stroke-width="1.2"/>
-  <text x="205" y="305" text-anchor="middle" fill="#172B4D" font-size="10.5" class="mono">if (!isActive) throw CancellationException()</text>
-
-  <path d="M205,321 L205,338" fill="none" stroke="#8A94A6" stroke-width="1.6" marker-end="url(#ah)"/>
-
-  <rect x="46" y="340" width="318" height="46" rx="8" fill="#E3FCEF" stroke="#57D9A3" stroke-width="2"/>
-  <text x="205" y="361" text-anchor="middle" fill="#186A3B" font-size="12.5">スタックを巻き戻して終了</text>
-  <text x="205" y="378" text-anchor="middle" fill="#186A3B" font-size="10.5" class="mono">Job: Cancelling -&gt; Cancelled</text>
-
-  <path d="M205,386 L205,398" fill="none" stroke="#8A94A6" stroke-width="1.4" marker-end="url(#ah)"/>
-  <rect x="140" y="400" width="130" height="30" rx="15" fill="#36B37E"/>
-  <text x="205" y="420" text-anchor="middle" fill="#FFFFFF" font-size="14.5" font-weight="600">≈ 106ms</text>
-
-  <!-- ===== RIGHT: no check point ===== -->
-  <rect x="400" y="184" width="330" height="78" rx="8" fill="#FFEBE6" stroke="#FF8F73" stroke-width="1.5"/>
-  <text x="565" y="208" text-anchor="middle" fill="#BF2600" font-size="13.5" font-weight="600">isActive を読む場所がない</text>
-  <text x="565" y="230" text-anchor="middle" fill="#BF2600" font-size="11" class="mono">チェックなしの CPU ループ</text>
-  <text x="565" y="249" text-anchor="middle" fill="#BF2600" font-size="11">中断点も ensureActive() もない</text>
-
-  <path d="M565,262 L565,279" fill="none" stroke="#8A94A6" stroke-width="1.6" marker-end="url(#ah)"/>
-
-  <rect x="408" y="281" width="314" height="40" rx="6" fill="#FFEBE6" stroke="#FF8F73" stroke-width="1.2"/>
-  <text x="565" y="305" text-anchor="middle" fill="#BF2600" font-size="11.5">isActive が false でも観測されない</text>
-
-  <path d="M565,321 L565,338" fill="none" stroke="#8A94A6" stroke-width="1.6" marker-end="url(#ah)"/>
-
-  <rect x="408" y="340" width="314" height="46" rx="8" fill="#FFEBE6" stroke="#FF8F73" stroke-width="2"/>
-  <text x="565" y="361" text-anchor="middle" fill="#BF2600" font-size="12.5">ブロックが戻るまで走り切る</text>
-  <text x="565" y="378" text-anchor="middle" fill="#BF2600" font-size="10.5" class="mono">Job は Cancelling のまま</text>
-
-  <path d="M565,386 L565,398" fill="none" stroke="#8A94A6" stroke-width="1.4" marker-end="url(#ah)"/>
-  <rect x="500" y="400" width="130" height="30" rx="15" fill="#DE350B"/>
-  <text x="565" y="420" text-anchor="middle" fill="#FFFFFF" font-size="14.5" font-weight="600">≈ 515ms</text>
+  <text x="385" y="452" text-anchor="middle" fill="#6B778C" font-size="10.5">数値は「期限 100ms・ループ実測 ~500ms（Dispatchers.Default）」のときの実測</text>
 </svg>
