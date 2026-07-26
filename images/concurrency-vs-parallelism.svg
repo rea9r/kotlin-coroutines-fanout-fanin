@@ -1,0 +1,17 @@
+<svg width="720" height="336" viewBox="0 0 720 336" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, &quot;Noto Sans JP&quot;, Meiryo, sans-serif">
+  <text x="40" y="28" fill="#42526E" font-size="14" font-weight="600">並行（concurrency）</text>
+  <text x="188" y="28" fill="#6B778C" font-size="12.5">1 スレッドでも、待ちを手放して複数を進める</text>
+  <text x="40" y="68" fill="#6B778C" font-size="12.5">処理1</text> <rect x="110" y="52" width="48" height="24" rx="5" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.3"/><text x="134.0" y="68" text-anchor="middle" fill="#186A3B" font-size="11">実行</text> <rect x="158" y="52" width="150" height="24" rx="5" fill="none" stroke="#B3BAC5" stroke-width="1.2" stroke-dasharray="4 3"/><text x="233.0" y="68" text-anchor="middle" fill="#8993A4" font-size="11">待ち</text>
+  <text x="40" y="98" fill="#6B778C" font-size="12.5">処理2</text> <rect x="158" y="82" width="48" height="24" rx="5" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.3"/><text x="182.0" y="98" text-anchor="middle" fill="#186A3B" font-size="11">実行</text> <rect x="206" y="82" width="150" height="24" rx="5" fill="none" stroke="#B3BAC5" stroke-width="1.2" stroke-dasharray="4 3"/><text x="281.0" y="98" text-anchor="middle" fill="#8993A4" font-size="11">待ち</text>
+  <text x="40" y="128" fill="#6B778C" font-size="12.5">処理3</text> <rect x="206" y="112" width="48" height="24" rx="5" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.3"/><text x="230.0" y="128" text-anchor="middle" fill="#186A3B" font-size="11">実行</text> <rect x="254" y="112" width="150" height="24" rx="5" fill="none" stroke="#B3BAC5" stroke-width="1.2" stroke-dasharray="4 3"/><text x="329.0" y="128" text-anchor="middle" fill="#8993A4" font-size="11">待ち</text>
+  <text x="110" y="156" fill="#6B778C" font-size="12">実行（濃い）は 1 スレッドで順番、待ち（点線）が重なる → 3 つが同時に進行中</text>
+
+  <line x1="40" y1="182" x2="680" y2="182" stroke="#EBECF0" stroke-width="1"/>
+
+  <text x="40" y="214" fill="#42526E" font-size="14" font-weight="600">並列（parallelism）</text>
+  <text x="188" y="214" fill="#6B778C" font-size="12.5">複数スレッド（コア）で物理的に同時に実行</text>
+  <text x="40" y="254" fill="#6B778C" font-size="12.5">スレッド1</text> <rect x="120" y="238" width="200" height="24" rx="5" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.3"/><text x="220.0" y="254" text-anchor="middle" fill="#186A3B" font-size="11">実行</text>
+  <text x="40" y="284" fill="#6B778C" font-size="12.5">スレッド2</text> <rect x="120" y="268" width="200" height="24" rx="5" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.3"/><text x="220.0" y="284" text-anchor="middle" fill="#186A3B" font-size="11">実行</text>
+  <text x="40" y="314" fill="#6B778C" font-size="12.5">スレッド3</text> <rect x="120" y="298" width="200" height="24" rx="5" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.3"/><text x="220.0" y="314" text-anchor="middle" fill="#186A3B" font-size="11">実行</text>
+  <text x="336" y="284" fill="#6B778C" font-size="12">3 つが同じ時間帯に走る（待ちのない CPU 計算はこちらで速くなる）</text>
+</svg>
