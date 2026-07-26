@@ -1,0 +1,70 @@
+<svg width="760" height="596" viewBox="0 0 760 596" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, &quot;Noto Sans JP&quot;, Meiryo, sans-serif">
+  <defs>
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#8A94A6"/></marker>
+  </defs>
+  <style>.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
+  <rect x="106" y="8" width="548" height="50" rx="10" fill="#F4F5F7" stroke="#DFE1E6" stroke-width="1"/>
+  <text x="380" y="31" text-anchor="middle" fill="#172B4D" font-size="15.5" font-weight="700">total に A が +3、B が +5 を並行に足す</text>
+  <text x="380" y="50" text-anchor="middle" fill="#5E6C84" font-size="12.5">両方の加算が反映されれば total = 8 ── これが正しい結果</text>
+  <g transform="translate(0,48)">
+
+  <line x1="142" y1="64" x2="142" y2="440" stroke="#4C9AFF" stroke-width="8" opacity="0.45"/>
+  <polygon points="129,437 155,437 142,458" fill="#4C9AFF" opacity="0.6"/>
+  <line x1="617" y1="64" x2="617" y2="440" stroke="#8777D9" stroke-width="8" opacity="0.45"/>
+  <polygon points="604,437 630,437 617,458" fill="#8777D9" opacity="0.6"/>
+  <line x1="380" y1="120" x2="380" y2="418" stroke="#C1C7D0" stroke-width="1.2" stroke-dasharray="3 5" opacity="0.45"/>
+
+  <rect x="72" y="24" width="140" height="40" rx="8" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.4"/>
+  <text x="142" y="49" text-anchor="middle" fill="#172B4D" font-size="13" font-weight="600">コルーチン A</text>
+  <rect x="310" y="24" width="140" height="40" rx="8" fill="#F4F5F7" stroke="#C1C7D0" stroke-width="1.4"/>
+  <text x="380" y="49" text-anchor="middle" fill="#172B4D" font-size="12.5">共有変数 <tspan class="mono">total</tspan></text>
+  <rect x="547" y="24" width="140" height="40" rx="8" fill="#EAE6FF" stroke="#998DD9" stroke-width="1.4"/>
+  <text x="617" y="49" text-anchor="middle" fill="#403294" font-size="13" font-weight="600">コルーチン B</text>
+
+  <text x="380" y="88" text-anchor="middle" fill="#6B778C" font-size="11">初期値 total = 0</text>
+
+  <rect x="52" y="138" width="180" height="44" rx="8" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.3"/>
+  <text x="142" y="159" text-anchor="middle" fill="#172B4D" font-size="12">① total を読む</text>
+  <text x="142" y="175" text-anchor="middle" fill="#172B4D" font-size="10.5" class="mono">取得した値 = 0</text>
+  <rect x="332" y="145" width="96" height="30" rx="6" fill="#F4F5F7" stroke="#C1C7D0" stroke-width="1.3"/>
+  <text x="380" y="165" text-anchor="middle" fill="#172B4D" font-size="14" font-weight="600" class="mono">0</text>
+  <path d="M330,160 L238,160" fill="none" stroke="#8A94A6" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="284" y="153" text-anchor="middle" fill="#7A869A" font-size="10">取得</text>
+
+  <rect x="527" y="208" width="180" height="44" rx="8" fill="#EAE6FF" stroke="#998DD9" stroke-width="1.3"/>
+  <text x="617" y="229" text-anchor="middle" fill="#403294" font-size="12">② total を読む</text>
+  <text x="617" y="245" text-anchor="middle" fill="#403294" font-size="10.5" class="mono">取得した値 = 0</text>
+  <rect x="332" y="215" width="96" height="30" rx="6" fill="#F4F5F7" stroke="#C1C7D0" stroke-width="1.3"/>
+  <text x="380" y="235" text-anchor="middle" fill="#172B4D" font-size="14" font-weight="600" class="mono">0</text>
+  <path d="M430,230 L521,230" fill="none" stroke="#8A94A6" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="476" y="223" text-anchor="middle" fill="#7A869A" font-size="10">取得</text>
+
+  <!-- bubble (single path): B read before A wrote, points at box 2 -->
+  <path d="M498,266 L590,266 L600,250 L616,266 L696,266 A12,12 0 0 1 708,278 L708,298 A12,12 0 0 1 696,310 L498,310 A12,12 0 0 1 486,298 L486,278 A12,12 0 0 1 498,266 Z" fill="#FFF7E6" stroke="#FFAB00" stroke-width="1.3"/>
+  <text x="597" y="287" text-anchor="middle" fill="#7A4D00" font-size="11">B は A の書き込み前に</text>
+  <text x="597" y="303" text-anchor="middle" fill="#7A4D00" font-size="11">0 を読んでいる</text>
+
+  <rect x="52" y="296" width="180" height="44" rx="8" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.3"/>
+  <text x="142" y="317" text-anchor="middle" fill="#172B4D" font-size="12">③ 0 + 3 を書き込む</text>
+  <text x="142" y="333" text-anchor="middle" fill="#172B4D" font-size="10.5" class="mono">total = 3</text>
+  <rect x="332" y="303" width="96" height="30" rx="6" fill="#FFF7E6" stroke="#FFAB00" stroke-width="1.5"/>
+  <text x="380" y="323" text-anchor="middle" fill="#7A4D00" font-size="14" font-weight="600" class="mono">3</text>
+  <path d="M238,318 L328,318" fill="none" stroke="#8A94A6" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="284" y="311" text-anchor="middle" fill="#7A869A" font-size="10">更新</text>
+
+  <rect x="527" y="376" width="180" height="44" rx="8" fill="#EAE6FF" stroke="#998DD9" stroke-width="1.3"/>
+  <text x="617" y="397" text-anchor="middle" fill="#403294" font-size="12">④ 0 + 5 を書き込む</text>
+  <text x="617" y="413" text-anchor="middle" fill="#403294" font-size="10.5" class="mono">total = 5</text>
+  <rect x="332" y="383" width="96" height="30" rx="6" fill="#FFEBE6" stroke="#FF8F73" stroke-width="1.7"/>
+  <text x="380" y="403" text-anchor="middle" fill="#BF2600" font-size="14" font-weight="600" class="mono">5</text>
+  <path d="M521,398 L432,398" fill="none" stroke="#8A94A6" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="476" y="391" text-anchor="middle" fill="#7A869A" font-size="10">更新</text>
+
+  <!-- conclusion bubble (single path): points at the 5 cell -->
+  <path d="M192,460 L370,460 L382,436 L394,460 L528,460 A12,12 0 0 1 540,472 L540,496 A12,12 0 0 1 528,508 L192,508 A12,12 0 0 1 180,496 L180,472 A12,12 0 0 1 192,460 Z" fill="#FFEBE6" stroke="#FF8F73" stroke-width="1.6"/>
+  <text x="360" y="481" text-anchor="middle" fill="#BF2600" font-size="12" font-weight="600">A が書いた 3 を B が上書きし、+3 が消える</text>
+  <text x="360" y="499" text-anchor="middle" fill="#BF2600" font-size="11.5">total = 5（期待は 8）＝ lost update</text>
+
+  <text x="380" y="534" text-anchor="middle" fill="#6B778C" font-size="11.5">✓ 値を返して Fan-in 側で 1 回だけ集約すれば total = 8 になる</text>
+  </g>
+</svg>

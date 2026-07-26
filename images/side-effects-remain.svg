@@ -1,45 +1,59 @@
-<svg width="740" height="352" viewBox="0 0 740 352" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, &quot;Noto Sans JP&quot;, Meiryo, sans-serif">
+<svg width="760" height="448" viewBox="0 0 760 448" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, &quot;Noto Sans JP&quot;, Meiryo, sans-serif">
+  <defs>
+    <marker id="rah" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#DE350B"/></marker>
+  </defs>
   <style>.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
 
-  <!-- time gridlines -->
-  <line x1="110" y1="50" x2="110" y2="190" stroke="#97A0AF" stroke-width="1" stroke-dasharray="2 5" opacity="0.35"/>
-  <line x1="340" y1="50" x2="340" y2="190" stroke="#97A0AF" stroke-width="1" stroke-dasharray="2 5" opacity="0.35"/>
-  <line x1="570" y1="50" x2="570" y2="198" stroke="#FF8F73" stroke-width="1.3" stroke-dasharray="4 3" opacity="0.8"/>
-  <text x="110" y="40" text-anchor="middle" fill="#7A869A" font-size="11" class="mono">0ms</text>
-  <text x="340" y="40" text-anchor="middle" fill="#7A869A" font-size="11" class="mono">10ms</text>
-  <text x="570" y="40" text-anchor="middle" fill="#7A869A" font-size="11" class="mono">20ms</text>
+  <!-- caller -->
+  <rect x="253" y="16" width="254" height="34" rx="8" fill="#F4F5F7" stroke="#C1C7D0" stroke-width="1.3"/>
+  <text x="380" y="38" text-anchor="middle" fill="#172B4D" font-size="11.5">呼び出し元（coroutineScope を呼ぶ側）</text>
 
-  <!-- lane a -->
-  <text x="58" y="82" text-anchor="middle" fill="#172B4D" font-size="13" font-weight="600" class="mono">a</text>
-  <rect x="110" y="64" width="230" height="26" rx="6" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.4"/>
-  <rect x="344" y="62" width="158" height="30" rx="8" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.5"/>
-  <text x="423" y="81" text-anchor="middle" fill="#186A3B" font-size="10.5" class="mono">committed.add(1)</text>
+  <!-- exception propagates out to caller -->
+  <path d="M380,98 L380,54" fill="none" stroke="#DE350B" stroke-width="2.6" marker-end="url(#rah)"/>
+  <rect x="398" y="56" width="292" height="40" rx="8" fill="#FFEBE6" stroke="#FF8F73" stroke-width="1.3"/>
+  <text x="410" y="73" fill="#BF2600" font-size="10.5" class="mono">throw IllegalStateException</text>
+  <text x="410" y="88" fill="#BF2600" font-size="10.5">呼び出し元まで伝播（scope 全体が例外で終了）</text>
 
-  <!-- lane b -->
-  <text x="58" y="128" text-anchor="middle" fill="#172B4D" font-size="13" font-weight="600" class="mono">b</text>
-  <rect x="110" y="110" width="230" height="26" rx="6" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.4"/>
-  <rect x="344" y="108" width="158" height="30" rx="8" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.5"/>
-  <text x="423" y="127" text-anchor="middle" fill="#186A3B" font-size="10.5" class="mono">committed.add(2)</text>
+  <!-- coroutineScope container (failed) -->
+  <rect x="60" y="100" width="640" height="228" rx="12" fill="none" stroke="#FF8F73" stroke-width="1.8"/>
+  <rect x="74" y="108" width="200" height="26" rx="6" fill="#FFEBE6" stroke="#FF8F73" stroke-width="1.2"/>
+  <text x="86" y="125" fill="#BF2600" font-size="11.5" font-weight="600">✗ coroutineScope が失敗</text>
 
-  <!-- lane c -->
-  <text x="58" y="174" text-anchor="middle" fill="#172B4D" font-size="13" font-weight="600" class="mono">c</text>
-  <rect x="110" y="156" width="460" height="26" rx="6" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.4"/>
-  <rect x="574" y="154" width="150" height="30" rx="8" fill="#FFEBE6" stroke="#FF8F73" stroke-width="1.5"/>
-  <text x="649" y="173" text-anchor="middle" fill="#BF2600" font-size="10.5" class="mono">error("boom")</text>
+  <!-- c failure propagates to the scope boundary -->
+  <path d="M612,236 C560,150 458,116 388,102" fill="none" stroke="#DE350B" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#rah)"/>
 
-  <!-- event annotation -->
-  <rect x="110" y="202" width="614" height="46" rx="8" fill="#FFF7E6" stroke="#FFAB00" stroke-width="1.4"/>
-  <text x="417" y="222" text-anchor="middle" fill="#7A4D00" font-size="12">20ms で c が失敗し、coroutineScope は残りをキャンセルして例外を外へ出す</text>
-  <text x="417" y="240" text-anchor="middle" fill="#7A4D00" font-size="12">でも a・b は 10ms で完了済み。その副作用は取り消されない</text>
+  <!-- timeline inside -->
+  <text x="150" y="152" text-anchor="middle" fill="#7A869A" font-size="10" class="mono">0ms</text>
+  <text x="360" y="152" text-anchor="middle" fill="#7A869A" font-size="10" class="mono">10ms</text>
+  <text x="575" y="152" text-anchor="middle" fill="#7A869A" font-size="10" class="mono">20ms</text>
+  <line x1="150" y1="158" x2="150" y2="262" stroke="#97A0AF" stroke-width="1" stroke-dasharray="2 5" opacity="0.3"/>
+  <line x1="360" y1="158" x2="360" y2="262" stroke="#97A0AF" stroke-width="1" stroke-dasharray="2 5" opacity="0.3"/>
+  <line x1="575" y1="158" x2="575" y2="266" stroke="#FF8F73" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.85"/>
 
-  <!-- result -->
-  <rect x="110" y="262" width="290" height="50" rx="8" fill="#FFEBE6" stroke="#FF8F73" stroke-width="2"/>
-  <text x="255" y="284" text-anchor="middle" fill="#BF2600" font-size="12.5">全体は失敗</text>
-  <text x="255" y="302" text-anchor="middle" fill="#BF2600" font-size="11" class="mono">throw IllegalStateException</text>
+  <text x="112" y="181" text-anchor="middle" fill="#8993A4" font-size="12" font-weight="600" class="mono">a</text>
+  <rect x="150" y="164" width="210" height="24" rx="6" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.3"/>
+  <text x="255" y="180" text-anchor="middle" fill="#172B4D" font-size="10.5" class="mono">delay(10)</text>
+  <rect x="364" y="162" width="152" height="28" rx="7" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.4"/>
+  <text x="440" y="180" text-anchor="middle" fill="#186A3B" font-size="10" class="mono">committed.add(1)</text>
 
-  <rect x="434" y="262" width="290" height="50" rx="8" fill="#E3FCEF" stroke="#57D9A3" stroke-width="2"/>
-  <text x="579" y="284" text-anchor="middle" fill="#186A3B" font-size="12.5">副作用は残る</text>
-  <text x="579" y="302" text-anchor="middle" fill="#186A3B" font-size="11" class="mono">committed == [1, 2]</text>
+  <text x="112" y="217" text-anchor="middle" fill="#8993A4" font-size="12" font-weight="600" class="mono">b</text>
+  <rect x="150" y="200" width="210" height="24" rx="6" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.3"/>
+  <text x="255" y="216" text-anchor="middle" fill="#172B4D" font-size="10.5" class="mono">delay(10)</text>
+  <rect x="364" y="198" width="152" height="28" rx="7" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.4"/>
+  <text x="440" y="216" text-anchor="middle" fill="#186A3B" font-size="10" class="mono">committed.add(2)</text>
 
-  <text x="417" y="336" text-anchor="middle" fill="#6B778C" font-size="12">キャンセルはロールバックではない。完了した副作用は元に戻らない</text>
+  <text x="112" y="253" text-anchor="middle" fill="#8993A4" font-size="12" font-weight="600" class="mono">c</text>
+  <rect x="150" y="236" width="425" height="24" rx="6" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.3"/>
+  <text x="362" y="252" text-anchor="middle" fill="#172B4D" font-size="10.5" class="mono">delay(20)</text>
+  <rect x="579" y="234" width="116" height="28" rx="7" fill="#FFEBE6" stroke="#FF8F73" stroke-width="1.5"/>
+  <text x="637" y="252" text-anchor="middle" fill="#BF2600" font-size="10" class="mono">error("boom")</text>
+
+  <text x="380" y="292" text-anchor="middle" fill="#8993A4" font-size="10.5">c の失敗で coroutineScope が例外を外へ投げる。まだ走っている子はキャンセルされるが、</text>
+  <text x="380" y="308" text-anchor="middle" fill="#8993A4" font-size="10.5">この例の a・b は完了済み＝キャンセル対象はなく、副作用は残る</text>
+
+  <!-- persistent side effects (outside the failed scope) -->
+  <text x="70" y="356" fill="#7A869A" font-size="11" font-weight="600">⚠ 完了済みの副作用は残る（ロールバックされない）</text>
+  <rect x="60" y="364" width="640" height="60" rx="10" fill="#FFF7E6" stroke="#FFAB00" stroke-width="1.6"/>
+  <text x="380" y="388" text-anchor="middle" fill="#7A4D00" font-size="11">a・b は c の失敗より前に完了し、committed.add(1)・committed.add(2) は実行済み</text>
+  <text x="380" y="408" text-anchor="middle" fill="#7A4D00" font-size="11">coroutineScope が失敗しても committed.sorted() == [1, 2] は残る（キャンセルはロールバックではない）</text>
 </svg>
