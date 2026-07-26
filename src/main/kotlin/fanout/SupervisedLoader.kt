@@ -9,7 +9,7 @@ import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.supervisorScope
 
 /**
- * Failure isolation with [supervisorScope] (chapter 5): one child's failure does not
+ * Failure isolation with [supervisorScope]: one child's failure does not
  * cancel its siblings. The parent still has to collect each [Deferred] itself.
  */
 suspend fun loadAllSupervised(api: ItemApi, ids: List<Int>): List<ItemLoadResult> =

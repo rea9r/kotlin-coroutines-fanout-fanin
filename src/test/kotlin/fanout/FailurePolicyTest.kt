@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Test
 
-/** Chapter 5: choosing a failure policy from the requirement, not the API. */
+/** Choosing a failure policy from the requirement, not the API. */
 class FailurePolicyTest {
 
     @Test

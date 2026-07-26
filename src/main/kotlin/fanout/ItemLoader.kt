@@ -21,7 +21,7 @@ class RetryableItemApiException(cause: Throwable) :
     IOException("transient Item API failure", cause)
 
 /**
- * The integrated example (chapter 10): an overall deadline, a per-attempt permit and
+ * The integrated example: an overall deadline, a per-attempt permit and
  * timeout, a limited retry, value-ified expected failures, and cancellation propagation.
  */
 class ItemLoader(

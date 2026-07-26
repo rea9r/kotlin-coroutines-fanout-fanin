@@ -12,7 +12,7 @@ import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.withTimeout
 import org.junit.jupiter.api.Test
 
-/** Chapter 10: the integrated [ItemLoader], one behavior per test. */
+/** The integrated [ItemLoader], one behavior per test. */
 class IntegratedItemLoaderTest {
 
     @Test

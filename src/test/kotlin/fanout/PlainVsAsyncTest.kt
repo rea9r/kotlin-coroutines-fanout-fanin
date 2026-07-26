@@ -6,7 +6,7 @@ import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Test
 
 /**
- * Chapter 1: using coroutines and parallelizing are separate decisions. A suspend
+ * Using coroutines and parallelizing are separate decisions. A suspend
  * function can compose a suspend call, a plain fun, and a dependent suspend call in
  * sequence - no async needed.
  */

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 
 /**
- * Chapters 3 and 4: cancellation is cooperative. A busy CPU loop is only stopped at a
+ * Cancellation is cooperative. A busy CPU loop is only stopped at a
  * cancellable suspension point or an explicit check. This uses a real dispatcher and
  * real wall-clock time, because a busy loop never lets virtual time advance.
  */

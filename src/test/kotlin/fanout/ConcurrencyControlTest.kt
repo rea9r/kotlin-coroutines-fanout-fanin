@@ -14,7 +14,7 @@ import kotlinx.coroutines.withTimeout
 import kotlinx.coroutines.withTimeoutOrNull
 import org.junit.jupiter.api.Test
 
-/** Chapter 6: bounding concurrency, time, and retries. */
+/** Bounding concurrency, time, and retries. */
 class ConcurrencyControlTest {
 
     @Test

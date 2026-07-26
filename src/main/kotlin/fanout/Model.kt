@@ -12,7 +12,7 @@ fun interface ItemApi {
  * The outcome of loading one item.
  *
  * Only *expected* failures become values here. Unexpected exceptions and
- * cancellation are not turned into values; they propagate out (chapter 5).
+ * cancellation are not turned into values; they propagate out.
  */
 sealed interface FetchOutcome<out T> {
     data class Success<T>(val value: T) : FetchOutcome<T>

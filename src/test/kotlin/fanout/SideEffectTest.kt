@@ -9,7 +9,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Test
 
-/** Chapter 7: cancellation is not a rollback. */
+/** Cancellation is not a rollback. */
 class SideEffectTest {
 
     @Test

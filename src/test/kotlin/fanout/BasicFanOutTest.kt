@@ -8,7 +8,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Test
 
-/** Chapters 2 and 9: the minimal fan-out / fan-in, checked in virtual time. */
+/** The minimal Fan-out / Fan-in, checked in virtual time. */
 class BasicFanOutTest {
 
     private suspend fun fetch(id: Int, ms: Long): Int {
