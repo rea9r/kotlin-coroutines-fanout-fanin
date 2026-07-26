@@ -1,0 +1,21 @@
+<svg width="720" height="206" viewBox="0 0 720 206" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, &quot;Noto Sans JP&quot;, Meiryo, sans-serif">
+  <defs><marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#8A94A6"/></marker></defs>
+  <text x="360" y="26" text-anchor="middle" fill="#6B778C" font-size="13.5">並行に 6 件呼んでも、同時に使える接続はプールの数（4）まで。あふれた分は待つ</text>
+  <rect x="20" y="98" width="104" height="54" rx="6" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.3"/><text x="72.0" y="129.5" text-anchor="middle" fill="#172B4D" font-size="15">呼び出し側</text>
+  <path d="M124,125 L152,125" fill="none" stroke="#8A94A6" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="191" y="84" text-anchor="middle" fill="#6B778C" font-size="12">待ち</text>
+  <rect x="158" y="90" width="66" height="24" rx="6" fill="#FFF7E6" stroke="#FFAB00" stroke-width="1.3"/><text x="191.0" y="106.5" text-anchor="middle" fill="#7A4D00" font-size="12">待ち</text>
+  <rect x="158" y="122" width="66" height="24" rx="6" fill="#FFF7E6" stroke="#FFAB00" stroke-width="1.3"/><text x="191.0" y="138.5" text-anchor="middle" fill="#7A4D00" font-size="12">待ち</text>
+  <path d="M226,125 L256,125" fill="none" stroke="#8A94A6" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="260" y="72" width="232" height="106" rx="10" fill="none" stroke="#B3BAC5" stroke-width="1.3"/>
+  <text x="376" y="94" text-anchor="middle" fill="#6B778C" font-size="14">接続プール（最大 4）</text>
+  <rect x="278" y="104" width="94" height="30" rx="6" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.3"/><text x="325.0" y="123.5" text-anchor="middle" fill="#186A3B" font-size="12">使用中</text>
+  <rect x="380" y="104" width="94" height="30" rx="6" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.3"/><text x="427.0" y="123.5" text-anchor="middle" fill="#186A3B" font-size="12">使用中</text>
+  <rect x="278" y="140" width="94" height="30" rx="6" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.3"/><text x="325.0" y="159.5" text-anchor="middle" fill="#186A3B" font-size="12">使用中</text>
+  <rect x="380" y="140" width="94" height="30" rx="6" fill="#E3FCEF" stroke="#57D9A3" stroke-width="1.3"/><text x="427.0" y="159.5" text-anchor="middle" fill="#186A3B" font-size="12">使用中</text>
+  <path d="M492,125 L548,125" fill="none" stroke="#8A94A6" stroke-width="1.5" marker-end="url(#a)"/>
+  <ellipse cx="606" cy="90" rx="40" ry="11" fill="none" stroke="#A5AEBC" stroke-width="1.3"/>
+  <path d="M566,90 L566,160 A40,11 0 0 0 646,160 L646,90" fill="none" stroke="#A5AEBC" stroke-width="1.3"/>
+  <text x="606" y="132" text-anchor="middle" fill="#6B778C" font-size="15">DB</text>
+  <text x="606" y="186" text-anchor="middle" fill="#6B778C" font-size="11.5">外部 API でも同じ</text>
+</svg>
