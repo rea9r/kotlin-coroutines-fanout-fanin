@@ -28,6 +28,7 @@ dispatcher.
 | `PlainVsAsyncTest` | using coroutines vs parallelizing are separate decisions |
 | `BasicFanOutTest` | sequential = sum, concurrent = slowest; `awaitAll` keeps order |
 | `FailurePolicyTest` | fail-fast, `runSuspendCatching`, `supervisorScope`, `await`'s two cancellation causes |
+| `CancellationPropagationTest` | cancelling a parent cancels every child (down-propagation in the Job tree) |
 | `ConcurrencyControlTest` | `Semaphore` cap, `withTimeoutOrNull`, retry with backoff (success and cancellation), a naive retry vs a per-attempt timeout |
 | `CooperativeCancellationTest` | a busy CPU loop is only stopped at a cancellable check |
 | `SideEffectTest` | completed side effects remain after a sibling fails (cancellation is not a rollback) |
