@@ -1,0 +1,49 @@
+<svg width="620" height="288" viewBox="0 0 620 288" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, &quot;Noto Sans JP&quot;, Meiryo, sans-serif">
+  <defs>
+    <marker id="bfill" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,1 L6,4 L0,7 z" fill="#6B778C"/></marker>
+    <marker id="gfill" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,1 L6,4 L0,7 z" fill="#B3BAC5"/></marker>
+  </defs>
+
+  <text x="310" y="22" text-anchor="middle" fill="#42526E" font-size="13">スコープの中身と、子への引き継ぎ</text>
+  <text x="310" y="42" text-anchor="middle" fill="#6B778C" font-size="9">親スコープの中で launch / async / coroutineScope を呼ぶと、子が作られる</text>
+
+  <!-- Parent scope -->
+  <rect x="24" y="56" width="240" height="170" rx="10" fill="none" stroke="#C1C7D0" stroke-width="1.2"/>
+  <text x="144" y="76" text-anchor="middle" fill="#42526E" font-size="11">CoroutineScope（親）</text>
+  <rect x="40" y="88" width="208" height="128" rx="8" fill="none" stroke="#B3BAC5" stroke-width="1"/>
+  <text x="50" y="103" text-anchor="start" fill="#8A94A6" font-size="9">CoroutineContext</text>
+  <rect x="50" y="110" width="188" height="30" rx="6" fill="#EAE6FF" stroke="#8777D9" stroke-width="1.1"/>
+  <rect x="51" y="111" width="4" height="28" fill="#8777D9"/>
+  <text x="148" y="130" text-anchor="middle" fill="#5243AA" font-size="10.5">Job：親</text>
+  <rect x="50" y="146" width="188" height="30" rx="6" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.1"/>
+  <rect x="51" y="147" width="4" height="28" fill="#4C9AFF"/>
+  <text x="148" y="166" text-anchor="middle" fill="#1858B8" font-size="10">Dispatcher：Default</text>
+  <rect x="50" y="182" width="188" height="24" rx="6" fill="none" stroke="#B3BAC5" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="148" y="198" text-anchor="middle" fill="#8A94A6" font-size="8.5">その他の要素</text>
+
+  <!-- Child scope -->
+  <rect x="356" y="56" width="240" height="170" rx="10" fill="none" stroke="#C1C7D0" stroke-width="1.2"/>
+  <text x="476" y="76" text-anchor="middle" fill="#42526E" font-size="11">CoroutineScope（子）</text>
+  <rect x="372" y="88" width="208" height="128" rx="8" fill="none" stroke="#B3BAC5" stroke-width="1"/>
+  <text x="382" y="103" text-anchor="start" fill="#8A94A6" font-size="9">CoroutineContext</text>
+  <rect x="382" y="110" width="188" height="30" rx="6" fill="#EAE6FF" stroke="#8777D9" stroke-width="1.1"/>
+  <rect x="383" y="111" width="4" height="28" fill="#8777D9"/>
+  <text x="480" y="130" text-anchor="middle" fill="#5243AA" font-size="10">Job：子（新規）</text>
+  <rect x="382" y="146" width="188" height="30" rx="6" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1.1"/>
+  <rect x="383" y="147" width="4" height="28" fill="#4C9AFF"/>
+  <text x="480" y="166" text-anchor="middle" fill="#1858B8" font-size="10">Dispatcher：Default</text>
+  <rect x="382" y="182" width="188" height="24" rx="6" fill="none" stroke="#B3BAC5" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="480" y="198" text-anchor="middle" fill="#8A94A6" font-size="8.5">その他の要素</text>
+
+  <!-- arrows: Job = dashed/open (new), Dispatcher = solid/filled (carried over) -->
+  <text x="310" y="117" text-anchor="middle" fill="#5243AA" font-size="8">新規（親 Job の子）</text>
+  <path d="M272,125 L348,125" fill="none" stroke="#6B778C" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#bfill)"/>
+  <text x="310" y="153" text-anchor="middle" fill="#1858B8" font-size="8">同じものを引き継ぐ</text>
+  <path d="M272,161 L348,161" fill="none" stroke="#6B778C" stroke-width="1.6" marker-end="url(#bfill)"/>
+  <path d="M272,194 L348,194" fill="none" stroke="#6B778C" stroke-width="1.6" marker-end="url(#bfill)"/>
+  <text x="310" y="186" text-anchor="middle" fill="#8A94A6" font-size="8">同じく引き継ぐ</text>
+
+  <!-- caption -->
+  <text x="310" y="250" text-anchor="middle" fill="#6B778C" font-size="10.5">Job だけは子ごとに新しく作られ、それが親 Job の子になる。</text>
+  <text x="310" y="268" text-anchor="middle" fill="#6B778C" font-size="10.5">Dispatcher など Job 以外は親と同じものを引き継ぐので、指定しなければ子も親と同じ Dispatcher で走る。</text>
+</svg>
