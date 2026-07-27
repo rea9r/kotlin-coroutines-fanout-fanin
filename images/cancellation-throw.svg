@@ -23,7 +23,7 @@
   <line x1="100" y1="60" x2="100" y2="350" stroke="#C1C7D0" stroke-width="1" stroke-dasharray="3 5" opacity="0.6"/>
   <line x1="290" y1="60" x2="290" y2="350" stroke="#C1C7D0" stroke-width="1" stroke-dasharray="3 5" opacity="0.6"/>
   <line x1="480" y1="60" x2="480" y2="332" stroke="#C1C7D0" stroke-width="1" stroke-dasharray="3 5" opacity="0.6"/>
-  <rect x="473" y="64" width="14" height="198" rx="3" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1"/>
+  <rect x="473" y="180" width="14" height="82" rx="3" fill="#DEEBFF" stroke="#4C9AFF" stroke-width="1"/>
   <text x="383" y="192" text-anchor="middle" fill="#5E6C84" font-size="9" class="mono">delay・ensureActive()・yield()</text>
   <text x="383" y="205" text-anchor="middle" fill="#7668CE" font-size="9.5">の中で isActive を確認</text>
   <path d="M473,211 L298,211" fill="none" stroke="#8777D9" stroke-width="1.5" marker-end="url(#vh)"/>
