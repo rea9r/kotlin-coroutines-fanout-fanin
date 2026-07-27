@@ -1,0 +1,71 @@
+<svg width="720" height="416" viewBox="0 0 720 416" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, &quot;Noto Sans JP&quot;, Meiryo, sans-serif">
+<defs><marker id="dn" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto"><path d="M0,1 L6,4 L0,7 z" fill="#8A94A6"/></marker></defs>
+<text x="360" y="26" text-anchor="middle" fill="#42526E" font-size="13.5">並列（Parallel）と並行（Concurrent）</text>
+<text x="20" y="126" text-anchor="middle" fill="#8A94A6" font-size="9">時間</text>
+<line x1="20" y1="134" x2="20" y2="306" stroke="#8A94A6" stroke-width="1" marker-end="url(#dn)"/>
+<rect x="40" y="44" width="196" height="312" rx="12" fill="none" stroke="#C1C7D0" stroke-width="1.2"/>
+<text x="138.0" y="66" text-anchor="middle" fill="#42526E" font-size="12">並列</text>
+<text x="138.0" y="80" text-anchor="middle" fill="#8A94A6" font-size="8.5">Parallel</text>
+<text x="138.0" y="98" text-anchor="middle" fill="#6B778C" font-size="9.5">複数のスレッドで同時に動く</text>
+<text x="78.0" y="116" text-anchor="middle" fill="#6B778C" font-size="8">Thread 1</text>
+<line x1="78.0" y1="122" x2="78.0" y2="306" stroke="#B3BAC5" stroke-width="1.4"/>
+<rect x="56.0" y="134" width="44" height="168" rx="8" fill="#DE5B7E"/>
+<text x="138.0" y="116" text-anchor="middle" fill="#6B778C" font-size="8">Thread 2</text>
+<line x1="138.0" y1="122" x2="138.0" y2="306" stroke="#B3BAC5" stroke-width="1.4"/>
+<rect x="116.0" y="134" width="44" height="168" rx="8" fill="#9B51E0"/>
+<text x="198.0" y="116" text-anchor="middle" fill="#6B778C" font-size="8">Thread 3</text>
+<line x1="198.0" y1="122" x2="198.0" y2="306" stroke="#B3BAC5" stroke-width="1.4"/>
+<rect x="176.0" y="134" width="44" height="168" rx="8" fill="#4C6EF5"/>
+<rect x="252" y="44" width="196" height="312" rx="12" fill="#8777D9" fill-opacity="0.07" stroke="#A896E0" stroke-width="1.8"/>
+<text x="350.0" y="66" text-anchor="middle" fill="#42526E" font-size="12">並行</text>
+<text x="350.0" y="80" text-anchor="middle" fill="#8A94A6" font-size="8.5">Concurrent</text>
+<text x="350.0" y="98" text-anchor="middle" fill="#6B778C" font-size="9.5">1 本のスレッドが順に切り替える</text>
+<text x="350.0" y="116" text-anchor="middle" fill="#6B778C" font-size="8">Thread 1</text>
+<line x1="350.0" y1="122" x2="350.0" y2="306" stroke="#B3BAC5" stroke-width="1.4"/>
+<clipPath id="c0"><rect x="328.0" y="134" width="44" height="168" rx="8"/></clipPath>
+<g clip-path="url(#c0)">
+<rect x="328.0" y="134" width="44" height="36" fill="#DE5B7E"/>
+<rect x="328.0" y="170" width="44" height="34" fill="#9B51E0"/>
+<rect x="328.0" y="204" width="44" height="30" fill="#4C6EF5"/>
+<rect x="328.0" y="234" width="44" height="34" fill="#DE5B7E"/>
+<rect x="328.0" y="268" width="44" height="34" fill="#9B51E0"/>
+<line x1="328.0" y1="170" x2="372.0" y2="170" stroke="#FFFFFF" stroke-width="1.8" stroke-opacity="0.9"/>
+<line x1="328.0" y1="204" x2="372.0" y2="204" stroke="#FFFFFF" stroke-width="1.8" stroke-opacity="0.9"/>
+<line x1="328.0" y1="234" x2="372.0" y2="234" stroke="#FFFFFF" stroke-width="1.8" stroke-opacity="0.9"/>
+<line x1="328.0" y1="268" x2="372.0" y2="268" stroke="#FFFFFF" stroke-width="1.8" stroke-opacity="0.9"/>
+</g>
+<line x1="372.0" y1="170" x2="384.0" y2="170" stroke="#8A94A6" stroke-width="1"/>
+<text x="387.0" y="173" text-anchor="start" fill="#6B778C" font-size="8.5">待ちで中断</text>
+<text x="350.0" y="332" text-anchor="middle" fill="#7A5AB8" font-size="9">コルーチンの「並行」はここ</text>
+<rect x="464" y="44" width="240" height="312" rx="12" fill="none" stroke="#C1C7D0" stroke-width="1.2"/>
+<text x="584.0" y="66" text-anchor="middle" fill="#42526E" font-size="12">並列かつ並行</text>
+<text x="584.0" y="80" text-anchor="middle" fill="#8A94A6" font-size="8.5">Parallel and Concurrent</text>
+<text x="584.0" y="98" text-anchor="middle" fill="#6B778C" font-size="9.5">複数のスレッドが、それぞれ切り替える</text>
+<text x="532.0" y="116" text-anchor="middle" fill="#6B778C" font-size="8">Thread 1</text>
+<line x1="532.0" y1="122" x2="532.0" y2="306" stroke="#B3BAC5" stroke-width="1.4"/>
+<clipPath id="c1"><rect x="510.0" y="134" width="44" height="168" rx="8"/></clipPath>
+<g clip-path="url(#c1)">
+<rect x="510.0" y="134" width="44" height="44" fill="#DE5B7E"/>
+<rect x="510.0" y="178" width="44" height="44" fill="#9B51E0"/>
+<rect x="510.0" y="222" width="44" height="40" fill="#4C6EF5"/>
+<rect x="510.0" y="262" width="44" height="40" fill="#DE5B7E"/>
+<line x1="510.0" y1="178" x2="554.0" y2="178" stroke="#FFFFFF" stroke-width="1.8" stroke-opacity="0.9"/>
+<line x1="510.0" y1="222" x2="554.0" y2="222" stroke="#FFFFFF" stroke-width="1.8" stroke-opacity="0.9"/>
+<line x1="510.0" y1="262" x2="554.0" y2="262" stroke="#FFFFFF" stroke-width="1.8" stroke-opacity="0.9"/>
+</g>
+<text x="636.0" y="116" text-anchor="middle" fill="#6B778C" font-size="8">Thread 2</text>
+<line x1="636.0" y1="122" x2="636.0" y2="306" stroke="#B3BAC5" stroke-width="1.4"/>
+<clipPath id="c2"><rect x="614.0" y="134" width="44" height="168" rx="8"/></clipPath>
+<g clip-path="url(#c2)">
+<rect x="614.0" y="134" width="44" height="40" fill="#9B51E0"/>
+<rect x="614.0" y="174" width="44" height="40" fill="#4C6EF5"/>
+<rect x="614.0" y="214" width="44" height="44" fill="#DE5B7E"/>
+<rect x="614.0" y="258" width="44" height="44" fill="#9B51E0"/>
+<line x1="614.0" y1="174" x2="658.0" y2="174" stroke="#FFFFFF" stroke-width="1.8" stroke-opacity="0.9"/>
+<line x1="614.0" y1="214" x2="658.0" y2="214" stroke="#FFFFFF" stroke-width="1.8" stroke-opacity="0.9"/>
+<line x1="614.0" y1="258" x2="658.0" y2="258" stroke="#FFFFFF" stroke-width="1.8" stroke-opacity="0.9"/>
+</g>
+<text x="360" y="372" text-anchor="middle" fill="#8A94A6" font-size="9">色＝1 つのコルーチン（同じ色＝中断して再開した同じもの）／グレーの縦線＝スレッド／縦＝時間の流れ／各パネルは独立した例</text>
+<text x="360" y="393" text-anchor="middle" fill="#6B778C" font-size="10.5">待ちに入ったコルーチンはスレッドを手放し、その間、別のコルーチンが同じスレッドで動く——スレッドが<tspan fill="#8777D9" font-weight="700">1 本でも「並行」</tspan></text>
+<text x="360" y="410" text-anchor="middle" fill="#6B778C" font-size="10.5">複数のスレッドに載せれば「並列かつ並行」。スレッドを増やさずに、切り替えるだけで足りる</text>
+</svg>

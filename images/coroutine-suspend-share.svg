@@ -1,0 +1,58 @@
+<svg width="760" height="288" viewBox="0 0 760 288" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, &quot;Noto Sans JP&quot;, Meiryo, sans-serif">
+  <defs>
+    <marker id="ax" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8A94A6"/></marker>
+    <clipPath id="tbar"><rect x="100" y="156" width="620" height="34" rx="6"/></clipPath>
+  </defs>
+
+  <text x="380" y="24" text-anchor="middle" fill="#42526E" font-size="13">待つ間はスレッドを手放し、別のコルーチンが同じスレッドで走る</text>
+
+  <!-- phase separators run through the lanes down to the thread bar -->
+  <line x1="306" y1="42" x2="306" y2="154" stroke="#DFE1E6" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="514" y1="42" x2="514" y2="154" stroke="#DFE1E6" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="203" y="50" text-anchor="middle" fill="#8A94A6" font-size="9">A が実行</text>
+  <text x="410" y="50" text-anchor="middle" fill="#8A94A6" font-size="9">A は待ち</text>
+  <text x="617" y="50" text-anchor="middle" fill="#8A94A6" font-size="9">A が再開</text>
+
+  <!-- lane: coroutine A -->
+  <text x="92" y="80" text-anchor="end" fill="#5243AA" font-size="10.5">コルーチン A</text>
+  <rect x="100" y="62" width="206" height="28" rx="5" fill="#EAE6FF" stroke="#8777D9" stroke-width="1.2"/>
+  <text x="203" y="80" text-anchor="middle" fill="#5243AA" font-size="10">実行</text>
+  <rect x="306" y="62" width="208" height="28" rx="5" fill="none" stroke="#E8912B" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="410" y="80" text-anchor="middle" fill="#8A5A00" font-size="9.5">データ待ち（中断）</text>
+  <rect x="514" y="62" width="206" height="28" rx="5" fill="#EAE6FF" stroke="#8777D9" stroke-width="1.2"/>
+  <text x="617" y="80" text-anchor="middle" fill="#5243AA" font-size="9.5">実行（再開）</text>
+
+  <!-- lane: coroutine B -->
+  <text x="92" y="118" text-anchor="end" fill="#067A8C" font-size="10.5">コルーチン B</text>
+  <rect x="306" y="100" width="208" height="28" rx="5" fill="#E6FCFF" stroke="#00B8D9" stroke-width="1.2"/>
+  <text x="410" y="118" text-anchor="middle" fill="#067A8C" font-size="10">実行</text>
+
+  <!-- handoff annotations -->
+  <text x="306" y="147" text-anchor="middle" fill="#6B778C" font-size="8.5">待ちで手放す</text>
+  <text x="514" y="147" text-anchor="middle" fill="#6B778C" font-size="8.5">到着で再開</text>
+
+  <!-- lane: the single OS thread (one continuous bar, colour regions show who runs) -->
+  <text x="92" y="170" text-anchor="end" fill="#1858B8" font-size="11">スレッド</text>
+  <text x="92" y="184" text-anchor="end" fill="#8A94A6" font-size="8">OS が管理する 1 本</text>
+  <g clip-path="url(#tbar)">
+    <rect x="100" y="156" width="206" height="34" fill="#EAE6FF"/>
+    <rect x="306" y="156" width="208" height="34" fill="#E6FCFF"/>
+    <rect x="514" y="156" width="206" height="34" fill="#EAE6FF"/>
+  </g>
+  <rect x="100" y="156" width="620" height="34" rx="6" fill="none" stroke="#4C9AFF" stroke-width="1.4"/>
+  <text x="203" y="178" text-anchor="middle" fill="#5243AA" font-size="12">A</text>
+  <text x="410" y="178" text-anchor="middle" fill="#067A8C" font-size="12">B</text>
+  <text x="617" y="178" text-anchor="middle" fill="#5243AA" font-size="12">A</text>
+
+  <!-- time axis -->
+  <line x1="100" y1="206" x2="726" y2="206" stroke="#8A94A6" stroke-width="1" marker-end="url(#ax)"/>
+  <text x="732" y="209" text-anchor="start" fill="#8A94A6" font-size="9">時間</text>
+
+  <!-- legend for the dashed (suspended) encoding -->
+  <rect x="100" y="220" width="18" height="11" rx="2" fill="none" stroke="#E8912B" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="124" y="229" text-anchor="start" fill="#8A5A00" font-size="9.5">破線＝スレッドを手放している（中断中）</text>
+
+  <!-- takeaway -->
+  <text x="380" y="252" text-anchor="middle" fill="#6B778C" font-size="10.5">ブロックせず中断して待つので、その間に別のコルーチンが同じスレッドで走る</text>
+  <text x="380" y="270" text-anchor="middle" fill="#6B778C" font-size="10.5">1 本のスレッドが空かず、リソースを無駄なく使える</text>
+</svg>
