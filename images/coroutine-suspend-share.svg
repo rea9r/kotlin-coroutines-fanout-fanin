@@ -29,7 +29,7 @@
 
   <!-- handoff annotations -->
   <text x="306" y="147" text-anchor="middle" fill="#6B778C" font-size="8.5">待ちで手放す</text>
-  <text x="514" y="147" text-anchor="middle" fill="#6B778C" font-size="8.5">到着で再開</text>
+  <text x="514" y="147" text-anchor="middle" fill="#6B778C" font-size="8.5">待ちが明けて再開</text>
 
   <!-- lane: the single OS thread (one continuous bar, colour regions show who runs) -->
   <text x="92" y="170" text-anchor="end" fill="#1858B8" font-size="11">スレッド</text>
