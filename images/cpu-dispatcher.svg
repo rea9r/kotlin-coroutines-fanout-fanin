@@ -1,0 +1,30 @@
+<svg width="720" height="300" viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, &quot;Noto Sans JP&quot;, Meiryo, sans-serif">
+  <defs><marker id="ax" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,1 L6,4 L0,7 z" fill="#8A94A6"/></marker></defs>
+
+  <text x="360" y="22" text-anchor="middle" fill="#42526E" font-size="13">CPU 計算の並列度は、async の数でなくスレッド（＝コア）の数で決まる</text>
+  <text x="360" y="41" text-anchor="middle" fill="#6B778C" font-size="9.5">同じ CPU 計算 3 つ（待ちなし）を async で並べても——</text>
+
+  <!-- 1-unit time marker across both panels -->
+  <line x1="262" y1="52" x2="262" y2="230" stroke="#C1C7D0" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="262" y="49" text-anchor="middle" fill="#8A94A6" font-size="8">CPU 計算 1 つ分</text>
+
+  <!-- Panel A: one thread -> sequential -->
+  <text x="138" y="80" text-anchor="end" fill="#42526E" font-size="10">スレッド 1</text>
+  <rect x="146" y="64" width="116" height="30" rx="5" fill="#DE5B7E"/><text x="204" y="84" text-anchor="middle" fill="#ffffff" font-size="11">A</text>
+  <rect x="262" y="64" width="116" height="30" rx="5" fill="#9B51E0"/><text x="320" y="84" text-anchor="middle" fill="#ffffff" font-size="11">B</text>
+  <rect x="378" y="64" width="116" height="30" rx="5" fill="#4C6EF5"/><text x="436" y="84" text-anchor="middle" fill="#ffffff" font-size="11">C</text>
+  <text x="146" y="112" text-anchor="start" fill="#6B778C" font-size="9.5">CPU 計算は待ちがなく、スレッドを占有し続ける（手放さない）。1 本では A→B→C を順番に＝合計時間。</text>
+
+  <!-- Panel B: multiple threads -> parallel -->
+  <text x="138" y="156" text-anchor="end" fill="#42526E" font-size="10">スレッド 1</text>
+  <rect x="146" y="142" width="116" height="24" rx="5" fill="#DE5B7E"/><text x="204" y="159" text-anchor="middle" fill="#ffffff" font-size="10.5">A</text>
+  <text x="138" y="186" text-anchor="end" fill="#42526E" font-size="10">スレッド 2</text>
+  <rect x="146" y="172" width="116" height="24" rx="5" fill="#9B51E0"/><text x="204" y="189" text-anchor="middle" fill="#ffffff" font-size="10.5">B</text>
+  <text x="138" y="216" text-anchor="end" fill="#42526E" font-size="10">スレッド 3</text>
+  <rect x="146" y="202" width="116" height="24" rx="5" fill="#4C6EF5"/><text x="204" y="219" text-anchor="middle" fill="#ffffff" font-size="10.5">C</text>
+  <text x="146" y="244" text-anchor="start" fill="#6B778C" font-size="9.5">スレッドが複数あれば、別々のスレッドで同時に走る。Dispatchers.Default はコア数までスレッドを使う。</text>
+
+  <!-- time axis -->
+  <line x1="146" y1="266" x2="510" y2="266" stroke="#8A94A6" stroke-width="1" marker-end="url(#ax)"/>
+  <text x="516" y="269" text-anchor="start" fill="#8A94A6" font-size="9">時間</text>
+</svg>
