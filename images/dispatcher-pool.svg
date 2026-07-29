@@ -1,38 +1,39 @@
-<svg width="742" height="248" viewBox="0 0 742 248" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, &quot;Noto Sans JP&quot;, Meiryo, sans-serif">
+<svg width="742" height="260" viewBox="0 0 742 260" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, &quot;Noto Sans JP&quot;, Meiryo, sans-serif">
   <defs>
     <marker id="abd" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0052CC"/></marker>
     <marker id="aio" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#FF991F"/></marker>
   </defs>
 
-  <text x="371" y="34" text-anchor="middle" fill="#172B4D" font-size="18" font-weight="600">スレッドプールは 1 つ。dispatcher で「同時に使うスレッドの数」が変わる</text>
+  <text x="371" y="28" text-anchor="middle" fill="#172B4D" font-size="18" font-weight="600">同時に使うスレッド数の上限は dispatcher で大きく違う</text>
+  <text x="371" y="49" text-anchor="middle" fill="#6B778C" font-size="12">同じ共有プールでも、上限はそれぞれ別に決まる</text>
 
-  <text x="22" y="112" text-anchor="start" fill="#0052CC" font-size="13" font-weight="600">Dispatchers.Default</text>
-  <text x="22" y="129" text-anchor="start" fill="#6B778C" font-size="10">CPU の仕事</text>
-  <text x="22" y="158" text-anchor="start" fill="#7A4B00" font-size="13" font-weight="600">Dispatchers.IO</text>
-  <text x="22" y="175" text-anchor="start" fill="#6B778C" font-size="10">ブロッキングの仕事</text>
-  <line x1="168" y1="116" x2="217" y2="120" stroke="#0052CC" stroke-width="2" marker-end="url(#abd)"/>
-  <line x1="168" y1="166" x2="217" y2="146" stroke="#FF991F" stroke-width="2" marker-end="url(#aio)"/>
+  <text x="22" y="124" text-anchor="start" fill="#0052CC" font-size="13" font-weight="600">Dispatchers.Default</text>
+  <text x="22" y="141" text-anchor="start" fill="#6B778C" font-size="10">CPU の仕事</text>
+  <text x="22" y="170" text-anchor="start" fill="#7A4B00" font-size="13" font-weight="600">Dispatchers.IO</text>
+  <text x="22" y="187" text-anchor="start" fill="#6B778C" font-size="10">ブロッキングの仕事</text>
+  <line x1="168" y1="128" x2="217" y2="132" stroke="#0052CC" stroke-width="2" marker-end="url(#abd)"/>
+  <line x1="168" y1="178" x2="217" y2="158" stroke="#FF991F" stroke-width="2" marker-end="url(#aio)"/>
 
-  <rect x="220" y="76" width="498" height="100" rx="14" fill="#F4F5F7" stroke="#C1C7D0" stroke-width="1.2"/>
-  <text x="224" y="70" text-anchor="start" fill="#5E6C84" font-size="11">共有スレッドプール</text>
-  <text x="323" y="99" text-anchor="middle" fill="#0052CC" font-size="16" font-weight="600">コア数まで</text>
-  <text x="561" y="99" text-anchor="middle" fill="#7A4B00" font-size="16" font-weight="600">64 本まで</text>
+  <rect x="220" y="88" width="498" height="100" rx="14" fill="#F4F5F7" stroke="#C1C7D0" stroke-width="1.2"/>
+  <text x="224" y="82" text-anchor="start" fill="#5E6C84" font-size="11">共有スレッドプール</text>
+  <text x="323" y="111" text-anchor="middle" fill="#0052CC" font-size="16" font-weight="600">コア数まで</text>
+  <text x="561" y="111" text-anchor="middle" fill="#7A4B00" font-size="16" font-weight="600">64 本まで</text>
   <g font-size="9.5">
-    <rect x="234" y="108" width="40" height="50" rx="6" fill="#B3D4FC" stroke="#4C9AFF" stroke-width="1"/><text x="254" y="137" text-anchor="middle" fill="#0747A6">計算中</text>
-    <rect x="280" y="108" width="40" height="50" rx="6" fill="#B3D4FC" stroke="#4C9AFF" stroke-width="1"/><text x="300" y="137" text-anchor="middle" fill="#0747A6">計算中</text>
-    <rect x="326" y="108" width="40" height="50" rx="6" fill="#B3D4FC" stroke="#4C9AFF" stroke-width="1"/><text x="346" y="137" text-anchor="middle" fill="#0747A6">計算中</text>
-    <rect x="372" y="108" width="40" height="50" rx="6" fill="#B3D4FC" stroke="#4C9AFF" stroke-width="1"/><text x="392" y="137" text-anchor="middle" fill="#0747A6">計算中</text>
-    <rect x="426" y="108" width="40" height="50" rx="6" fill="#FFE380" stroke="#FF991F" stroke-width="1"/><text x="446" y="137" text-anchor="middle" fill="#6B4700">I/O 待ち</text>
-    <rect x="472" y="108" width="40" height="50" rx="6" fill="#FFE380" stroke="#FF991F" stroke-width="1"/><text x="492" y="137" text-anchor="middle" fill="#6B4700">I/O 待ち</text>
-    <rect x="518" y="108" width="40" height="50" rx="6" fill="#FFE380" stroke="#FF991F" stroke-width="1"/><text x="538" y="137" text-anchor="middle" fill="#6B4700">I/O 待ち</text>
-    <rect x="564" y="108" width="40" height="50" rx="6" fill="#FFE380" stroke="#FF991F" stroke-width="1"/><text x="584" y="137" text-anchor="middle" fill="#6B4700">I/O 待ち</text>
-    <rect x="610" y="108" width="40" height="50" rx="6" fill="#FFE380" stroke="#FF991F" stroke-width="1"/><text x="630" y="137" text-anchor="middle" fill="#6B4700">I/O 待ち</text>
-    <rect x="656" y="108" width="40" height="50" rx="6" fill="#FFE380" stroke="#FF991F" stroke-width="1"/><text x="676" y="137" text-anchor="middle" fill="#6B4700">I/O 待ち</text>
+    <rect x="234" y="120" width="40" height="50" rx="6" fill="#B3D4FC" stroke="#4C9AFF" stroke-width="1"/><text x="254" y="149" text-anchor="middle" fill="#0747A6">計算中</text>
+    <rect x="280" y="120" width="40" height="50" rx="6" fill="#B3D4FC" stroke="#4C9AFF" stroke-width="1"/><text x="300" y="149" text-anchor="middle" fill="#0747A6">計算中</text>
+    <rect x="326" y="120" width="40" height="50" rx="6" fill="#B3D4FC" stroke="#4C9AFF" stroke-width="1"/><text x="346" y="149" text-anchor="middle" fill="#0747A6">計算中</text>
+    <rect x="372" y="120" width="40" height="50" rx="6" fill="#B3D4FC" stroke="#4C9AFF" stroke-width="1"/><text x="392" y="149" text-anchor="middle" fill="#0747A6">計算中</text>
+    <rect x="426" y="120" width="40" height="50" rx="6" fill="#FFE380" stroke="#FF991F" stroke-width="1"/><text x="446" y="149" text-anchor="middle" fill="#6B4700">I/O 待ち</text>
+    <rect x="472" y="120" width="40" height="50" rx="6" fill="#FFE380" stroke="#FF991F" stroke-width="1"/><text x="492" y="149" text-anchor="middle" fill="#6B4700">I/O 待ち</text>
+    <rect x="518" y="120" width="40" height="50" rx="6" fill="#FFE380" stroke="#FF991F" stroke-width="1"/><text x="538" y="149" text-anchor="middle" fill="#6B4700">I/O 待ち</text>
+    <rect x="564" y="120" width="40" height="50" rx="6" fill="#FFE380" stroke="#FF991F" stroke-width="1"/><text x="584" y="149" text-anchor="middle" fill="#6B4700">I/O 待ち</text>
+    <rect x="610" y="120" width="40" height="50" rx="6" fill="#FFE380" stroke="#FF991F" stroke-width="1"/><text x="630" y="149" text-anchor="middle" fill="#6B4700">I/O 待ち</text>
+    <rect x="656" y="120" width="40" height="50" rx="6" fill="#FFE380" stroke="#FF991F" stroke-width="1"/><text x="676" y="149" text-anchor="middle" fill="#6B4700">I/O 待ち</text>
   </g>
-  <text x="702" y="139" text-anchor="start" fill="#7A4B00" font-size="16">…</text>
+  <text x="702" y="151" text-anchor="start" fill="#7A4B00" font-size="16">…</text>
 
-  <circle cx="30" cy="206" r="5" fill="#0052CC"/>
-  <text x="46" y="211" text-anchor="start" fill="#42526E" font-size="12">計算は CPU を使い切るので、コア数より多く動かしても奪い合うだけで速くならない。</text>
-  <circle cx="30" cy="230" r="5" fill="#FF991F"/>
-  <text x="46" y="235" text-anchor="start" fill="#42526E" font-size="12">I/O は大半が待ち時間。たくさん同時に走らせて待ちを重ねるほど、全体が早く終わる。</text>
+  <circle cx="30" cy="218" r="5" fill="#0052CC"/>
+  <text x="46" y="223" text-anchor="start" fill="#42526E" font-size="12">計算は CPU を使い切るので、コア数より多く動かしても奪い合うだけで速くならない。</text>
+  <circle cx="30" cy="242" r="5" fill="#FF991F"/>
+  <text x="46" y="247" text-anchor="start" fill="#42526E" font-size="12">I/O は大半が待ち時間。たくさん同時に走らせて待ちを重ねるほど、全体が早く終わる。</text>
 </svg>
